@@ -1,42 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crowd Warm-Up</title>
-<style>
-body{margin:0;padding:12px;background:transparent}
-#kwu{font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;max-width:760px;margin:0 auto;background:linear-gradient(160deg,#2a0a12,#5c1420 55%,#8b2525);color:#fff;border-radius:20px;padding:22px 24px 18px;box-shadow:0 10px 30px rgba(0,0,0,.35);box-sizing:border-box;user-select:none;position:relative;overflow:hidden}
-#kwu .glow{position:absolute;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(255,204,77,.28),transparent 70%);top:-110px;right:-80px;pointer-events:none}
-#kwu .top{display:flex;justify-content:space-between;align-items:center;gap:8px;position:relative}
-#kwu .kick{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;font-weight:800}
-#kwu .count{font-size:11px;background:rgba(255,255,255,.14);padding:5px 10px;border-radius:999px;font-weight:700}
-#kwu .card{position:relative;margin-top:14px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:18px 18px 16px;animation:pop .35s ease}
-#kwu .emoji{font-size:40px;line-height:1}
-#kwu .hands{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.1em;color:#ffcc4d;margin-top:8px}
-#kwu .q{font-size:25px;font-weight:850;line-height:1.25;margin:4px 0 14px}
-#kwu .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px}
-#kwu .tile{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:10px 12px;font-size:15px;font-weight:600;display:flex;gap:8px;align-items:center}
-#kwu .tile{border-left:4px solid #ffcc4d}
-#kwu .tile .e{font-size:18px}
-#kwu .zing{font-size:13px;opacity:.85;margin-top:12px;font-style:italic}
-#kwu .nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;position:relative}
-#kwu button{border:0;border-radius:10px;padding:10px 18px;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit}
-#kwu .prev{background:rgba(255,255,255,.14);color:#fff}
-#kwu .next{background:#ffcc4d;color:#2a0a12}
-#kwu .dots{display:flex;gap:5px}
-#kwu .dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer}
-#kwu .dots span.on{background:#ffcc4d;width:18px;border-radius:4px}
-@keyframes pop{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
-@media(max-width:520px){#kwu .q{font-size:20px}}
-</style></head><body>
-<div id="kwu">
-  <div class="glow"></div>
-  <div class="top"><div class="kick">🩺 Crowd Work · Getting to Know You</div><div class="count"></div></div>
-  <div class="stage"></div>
-  <div class="nav">
-    <button class="prev">◀ Back</button>
-    <div class="dots"></div>
-    <button class="next">Next ▶</button>
-  </div>
-  <div style="margin-top:10px;font-size:10px;opacity:.5;text-align:right;position:relative">Keck Medicine of USC · Together we are limitless</div>
-</div>
-<script>
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Crowd Warm-Up</title><style>
+html,body{margin:0;height:100%;overflow:hidden;background:#5c1420}
+*{box-sizing:border-box}
+.stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform:translate(-50%,-50%) scale(var(--s,1));transform-origin:center;
+  font-family:system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;color:#fff;background:linear-gradient(160deg,#2a0a12,#5c1420 55%,#8b2525);padding:40px 56px 30px;overflow:hidden}
+.glow{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(255,204,77,.26),transparent 70%);top:-220px;right:-160px;pointer-events:none}
+.top{position:relative;display:flex;justify-content:space-between;align-items:center}
+.kick{font-size:18px;letter-spacing:.14em;text-transform:uppercase;color:#ffcc4d;font-weight:800}
+.pill{font-size:15px;background:rgba(255,255,255,.14);padding:7px 14px;border-radius:999px;font-weight:700}
+.foot{position:absolute;right:56px;bottom:16px;font-size:12px;opacity:.5}
+
+.card{position:relative;margin-top:22px;height:530px;display:flex;flex-direction:column;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:24px;padding:30px 36px;animation:pop .35s ease}
+.qrow{display:flex;gap:20px;align-items:center}
+.emoji{font-size:64px;line-height:1}
+.hl{font-size:16px;font-weight:800;text-transform:uppercase;letter-spacing:.12em;color:#ffcc4d}
+.q{font-size:44px;font-weight:850;line-height:1.2;margin-top:4px}
+.tiles{flex:1;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:16px;margin:28px 0 22px}
+.tile{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.16);border-left:5px solid #ffcc4d;border-radius:14px;padding:16px 20px;font-size:25px;font-weight:650;display:flex;gap:14px;align-items:center}
+.tile .e{font-size:32px}
+.zing{font-size:21px;opacity:.9;font-style:italic}
+.nav{position:absolute;left:56px;right:56px;bottom:30px;display:flex;justify-content:space-between;align-items:center}
+button{border:0;border-radius:12px;padding:12px 24px;font-weight:800;font-size:17px;cursor:pointer;font-family:inherit}
+.prev{background:rgba(255,255,255,.14);color:#fff}
+.next{background:#ffcc4d;color:#2a0a12}
+.dots{display:flex;gap:6px}
+.dots span{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.25);cursor:pointer}
+.dots span.on{background:#ffcc4d;width:24px;border-radius:5px}
+.foot{bottom:6px}
+@keyframes pop{from{opacity:0;transform:translateY(10px) scale(.98)}to{opacity:1;transform:none}}
+</style></head><body><div class="stage"><div class="glow"></div><div class="top"><div class="kick">🩺 Crowd Work · Getting to Know You</div><div class="pill"></div></div><div class="slot"></div><div class="nav"><button class="prev">◀ Back</button><div class="dots"></div><button class="next">Next ▶</button></div><div class="foot">Keck Medicine of USC · Together we are limitless</div></div><script>(function(){function f(){document.documentElement.style.setProperty('--s',Math.min(innerWidth/1280,innerHeight/720))}addEventListener('resize',f);f()})();</script><script>
 (function(){
   var S=[
     {e:'🧭',q:'Where are you coming to Keck from?',o:[['🎓','Brand-new grad'],['🌴','Another LA hospital'],['✈️','Out of state'],['🧳','Travel / agency life'],['🔄','Career changer'],['👋','Back after a break']],z:'New grads: keep your hands up. Everyone else, look at them. That was you once.'},
@@ -44,23 +35,23 @@ body{margin:0;padding:12px;background:transparent}
     {e:'🚗',q:'How bad is your commute?',o:[['🚶','Under 15 minutes'],['🚙','15 – 30 minutes'],['🛣️','30 – 60 minutes'],['🎧','Over an hour (podcast era)'],['😩','Don’t ask. It’s the 10.']],z:'Over an hour? Raise your coffee instead of your hand.'},
     {e:'🖥️',q:'Which charting system are you coming from?',o:[['🟦','Cerner / Oracle Health'],['🟩','Epic'],['⬛','Meditech'],['📝','Paper charts (respect)'],['🫣','What’s charting?']],z:'Epic people: welcome to Cerner. Your trauma is valid.'},
     {e:'💡',q:'What brought you into healthcare?',o:[['👪','A family member'],['🦸','A clinician who inspired me'],['❤️','Wanted to help people'],['🔒','Job security'],['📺','Grey’s Anatomy (be honest)'],['🤔','Still figuring it out']],z:'Grey’s Anatomy hands — we see you. Keep them up. Proudly.'},
-    {e:'☕',q:'How much coffee gets you through a shift?',o:[['😇','None — I’m naturally like this'],['☕','1 cup'],['☕☕','2 – 3 cups'],['💉','Basically an IV drip'],['⚡','Energy drinks. Don’t judge.']],z:'If you said “none,” please see me after. We need to study you.'},
+    {e:'☕',q:'How much coffee gets you through a shift?',o:[['😇','None — I’m naturally like this'],['☕','1 cup'],['🫖','2 – 3 cups'],['💉','Basically an IV drip'],['⚡','Energy drinks. Don’t judge.']],z:'If you said “none,” please see me after. We need to study you.'},
     {e:'🦸',q:'What’s your healthcare superpower?',o:[['💉','First-stick IVs'],['🤝','Calming anxious families'],['🔍','Finding supplies nobody else can'],['⚡','Charting at lightning speed'],['🥪','Surviving on zero lunch break']],z:'Supply finders: you will be the most popular person on your unit by Friday.'},
     {e:'😵',q:'Hardest part of week one so far?',o:[['🅿️','Parking'],['🚻','Finding the bathroom'],['📛','Learning everyone’s names'],['🪪','Badge access'],['🗺️','Getting lost in the building'],['😎','So far so good!']],z:'Lost in the building? Same. I’ve worked here a while. Still happens.'},
     {e:'🤫',q:'Have you ever said the “Q word” on shift?',o:[['😇','Never. I’m not a monster.'],['💀','Once — and I paid for it'],['🔥','Every time. I like chaos.'],['🙃','What’s the Q word?']],z:'If you don’t know the Q word: never, EVER say “quiet.” Oh no. I just said it.'},
     {e:'🌕',q:'Full moon = busier shift?',o:[['💯','Absolutely, 100%'],['🦉','Only on nights'],['📊','The data says no…'],['😤','…but the data never worked a night shift']],z:'Evidence-based practice, meet vibes-based practice.'}
   ];
-  var R=document.getElementById('kwu'),i=0;
+  var R=document.querySelector('.stage'),i=0;
   function q(s){return R.querySelector(s)}
   var dots=q('.dots');
   S.forEach(function(_,k){var d=document.createElement('span');d.onclick=function(){go(k)};dots.appendChild(d)});
   function render(){
     var s=S[i];
-    var h='<div class="card"><div class="emoji">'+s.e+'</div><div class="hands">✋ Hands up if…</div><div class="q">'+s.q+'</div><div class="tiles">';
+    var h='<div class="card"><div class="qrow"><div class="emoji">'+s.e+'</div><div><div class="hl">✋ Hands up if…</div><div class="q">'+s.q+'</div></div></div><div class="tiles">';
     s.o.forEach(function(o){h+='<div class="tile"><span class="e">'+o[0]+'</span><span>'+o[1]+'</span></div>'});
     h+='</div><div class="zing">🎤 '+s.z+'</div></div>';
-    q('.stage').innerHTML=h;
-    q('.count').textContent=(i+1)+' / '+S.length;
+    q('.slot').innerHTML=h;
+    q('.pill').textContent=(i+1)+' / '+S.length;
     q('.prev').style.visibility=i?'visible':'hidden';
     q('.next').textContent=i<S.length-1?'Next ▶':'Again ↺';
     dots.querySelectorAll('span').forEach(function(d,k){d.className=k===i?'on':''});
@@ -71,5 +62,4 @@ body{margin:0;padding:12px;background:transparent}
   document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
   render();
 })();
-</script>
-</body></html>
+</script></body></html>
