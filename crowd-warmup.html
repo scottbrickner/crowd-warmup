@@ -1,0 +1,56 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>crowd-warmup</title><style>body{margin:0;padding:12px;background:#fffefc}</style></head><body>
+<div id="kwu" style="font-family:'Inter','Segoe UI',system-ui,-apple-system,Roboto,sans-serif;max-width:1100px;margin:0 auto;background:#fffefc;color:#1a1a1a;box-sizing:border-box;padding:18px 24px 14px;text-align:center;user-select:none">
+  <div style="display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase">
+    <span style="background:#8b2525;color:#fff;padding:5px 12px;border-radius:999px">✋ Hands up if…</span>
+    <span class="count" style="color:#8b2525"></span>
+  </div>
+
+  <div class="q" style="font-size:30px;font-weight:700;line-height:1.25;margin:34px auto 28px;max-width:900px"></div>
+
+  <div class="tiles" style="display:flex;flex-wrap:wrap;justify-content:center;gap:16px;min-height:236px;align-content:flex-start"></div>
+
+  <div style="display:flex;justify-content:center;align-items:center;gap:14px;margin-top:22px">
+    <button class="prev" style="border:2px solid #8b2525;background:#fff;color:#8b2525;font-weight:800;font-size:15px;border-radius:8px;padding:9px 20px;cursor:pointer">◀ Back</button>
+    <button class="next" style="border:0;background:#8b2525;color:#fff;font-weight:800;font-size:15px;border-radius:8px;padding:11px 24px;cursor:pointer">Next ▶</button>
+  </div>
+  <div class="dots" style="display:flex;justify-content:center;gap:6px;margin-top:12px"></div>
+</div>
+<script>
+(function(){
+  var S=[
+    {q:'Where are you coming to Keck from?',o:['Brand-new grad','Another LA hospital','Out of state','Travel / agency life','Career changer','Back after a break']},
+    {q:'What shift are you working?',o:['Days','Nights','Rotating','Whatever they give me','I’ll find out at orientation']},
+    {q:'How long is your commute?',o:['Under 15 minutes','15 – 30 minutes','30 – 60 minutes','Over an hour','Don’t ask. It’s the 10.']},
+    {q:'How many hospitals have you worked at?',o:['This is my first!','2','3 – 4','5 or more','Lost count (traveler)']},
+    {q:'Which charting system are you coming from?',o:['Cerner / Oracle Health','Epic','Meditech','Paper charts (respect)','What’s charting?']},
+    {q:'What brought you into healthcare?',o:['A family member','A clinician who inspired me','Wanted to help people','Job security','Grey’s Anatomy (be honest)','Still figuring it out']},
+    {q:'How much coffee does it take to get you through a shift?',o:['None — I’m naturally like this','1 cup','2 – 3 cups','Basically an IV drip','Energy drinks. Don’t judge.']},
+    {q:'What’s your healthcare superpower?',o:['First-stick IVs','Calming anxious families','Finding supplies nobody else can','Charting like lightning','Surviving with no lunch break']},
+    {q:'What’s been the hardest part of week one?',o:['Parking','Finding the bathroom','Learning everyone’s names','Badge access','Getting lost in the building','So far so good!']},
+    {q:'Have you ever said the “Q word” on shift? 🤫',o:['Never. I’m not a monster.','Once — and I paid for it','Every time, I like chaos','What’s the Q word?']},
+    {q:'Full moon = busier shift?',o:['Absolutely, 100%','Only on nights','The data says no…','…but the data has never worked a night shift']}
+  ];
+  var R=document.getElementById('kwu'),i=0;
+  function q(s){return R.querySelector(s)}
+  var dots=q('.dots');
+  S.forEach(function(_,k){var d=document.createElement('span');d.style.cssText='width:9px;height:9px;border-radius:50%;background:#e6d6a0;cursor:pointer';d.onclick=function(){go(k)};dots.appendChild(d)});
+  function tile(t){var e=document.createElement('div');
+    e.style.cssText='background:#f7cd48;color:#1a1a1a;font-size:20px;font-weight:500;line-height:1.2;width:200px;min-height:110px;padding:14px;box-sizing:border-box;display:flex;align-items:center;justify-content:center;border-radius:4px;box-shadow:0 2px 0 rgba(0,0,0,.08)';
+    e.textContent=t;return e}
+  function render(){
+    var s=S[i];
+    q('.count').textContent=(i+1)+' / '+S.length;
+    q('.q').textContent=s.q;
+    var T=q('.tiles');T.innerHTML='';s.o.forEach(function(o){T.appendChild(tile(o))});
+    q('.prev').style.visibility=i?'visible':'hidden';
+    q('.next').textContent=i<S.length-1?'Next ▶':'Start over ↺';
+    dots.querySelectorAll('span').forEach(function(d,k){d.style.background=k===i?'#8b2525':'#e6d6a0'});
+  }
+  function go(k){i=(k+S.length)%S.length;render()}
+  q('.next').onclick=function(){go(i+1)};
+  q('.prev').onclick=function(){go(i-1)};
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight')go(i+1);if(e.key==='ArrowLeft')go(i-1)});
+  render();
+})();
+</script>
+</body></html>
